@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#define maxn 105
+
+int main ()
+{
+	int n,i,ans,l,k,flag;
+	ans = 0;
+	char a[maxn];
+	scanf("%d",&n);
+	while(n--)
+	{
+		scanf("%s",a);
+		l = strlen(a);
+		for (k=0;k<=l;k++)
+		{flag=1;
+		for (i=0;i<l;i++)
+		{	
+			if(a[(k+i)%l] > a[(ans+i)%l]) break;
+			if(a[(k+i)%l] < a[(ans+i)%l])
+			{
+				ans=k;
+				break;  
+			}
+		}
+		}
+		for (i=0;i<strlen(a);i++)
+		{
+			printf("%c",a[(ans+i)%l]);
+		}
+		printf("\n");
+ } 
+}
