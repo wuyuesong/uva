@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	int n,i,j,k,flag;
+	char a[100];
+	scanf("%d",&n);
+	while (n--)
+	{
+		scanf("%s",a);
+		for (i=1;i<=strlen(a);i++)
+		{
+			flag=1;
+			if (strlen(a)%i==0 )
+			{
+				for (j = 1;j<=strlen(a)/i-1;j++)
+				{
+					for (k = 1;k <= i;k++)
+					{
+						if (a[k-1] != a[j*i-1+k]) 
+						{
+							j = strlen(a)/i+1;
+							flag = 0;
+							break;
+						}
+					}
+				}
+					if (flag)
+				{
+					if (n)
+					{
+					printf("%d\n\n",i);
+					break;
+					}
+					else
+					{
+					printf("%d\n",i);
+					break;	
+					}
+				}
+			}
+			
+			
+		}
+		if (flag == 0 && n)
+		{
+			printf("%d\n\n",strlen(a));
+		}
+		else if (flag == 0)
+		{
+			printf("%d\n",strlen(a));
+		}
+	}
+	
+}
