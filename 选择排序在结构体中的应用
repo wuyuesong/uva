@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+struct student
+{
+	int num;
+	char name[10];
+	int score;
+}  a[4]={{24,"wang",97},{25,"li",94},{26,"zhang",95},{27,"wu",92}};
+
+int main ()
+{
+	struct student temp;
+	int k,i,j;
+	for (i=0;i<=2;i++)
+	{
+		k=i;
+		for (j=i+1;j<=3;j++)
+		{
+			if (a[k].score >a[j].score )
+				k=j;
+		 } 
+		temp = a[i];a[i] = a[k]; a[k] =temp;
+	}
+	for (i=0;i<=3;i++)
+	{
+		printf("%d %s %d\n",a[i].num,a[i].name,a[i].score);
+	}
+} 
+
+
+
