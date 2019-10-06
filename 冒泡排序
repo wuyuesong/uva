@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int sort(int a[10])
+{
+	int t;
+	int i,j;
+	for (i=0;i<9;i++)
+	{
+		for (j=9;j>i;j--)
+		{
+			if (a[j]<a[j-1]) 
+			{
+				t= a[j];
+				a[j]=a[j-1];
+				a[j-1]=t;
+			}
+		}
+	}
+}
+
+int main ()
+{
+	int a[10];
+	int i;
+	for (i=0;i<=9;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	sort (a);
+	for (i=0;i<=9;i++)
+	{
+		printf("%d\n",a[i]);
+	}
+	return 0;
+} 
