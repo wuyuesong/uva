@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <string.h>
+char a1[1100],a2[1100];
+
+int main()
+{
+	void px (int *a);
+	int count1 [30],count2 [30];
+	int flag;
+	int i;
+	while (scanf("%s%s",a1,a2) != EOF)
+	{
+		memset (count1,0,sizeof(count1));
+		memset (count2,0,sizeof(count2));
+		for (i=0;i<strlen(a1);i++)
+		{
+			count1[a1[i]-'A']++;
+		}
+		for (i=0;i<strlen(a2);i++)
+		{
+			count2[a2[i]-'A']++;
+		}
+		px (count1);
+		px (count2);
+		flag = 1;
+		for (i=0;i<=25;i++)
+		{
+			if (count1[i] != count2[i]) flag=0;
+		}
+		if (flag==0)
+		{
+			printf("NO\n");
+		}
+		else
+		{
+			printf("YES\n");
+		}
+	}
+}
+
+void px (int *a)
+{
+	int i,j;
+	int temp;
+	for (i=0;i<=24;i++)
+		for (j=25;j>i;j--)
+		   if (a[j]>a[j-1])
+		   {
+		   	temp = a[j];
+		   	a[j] = a[j-1];
+		   	a[j-1] = temp;
+		   }
+}
+
