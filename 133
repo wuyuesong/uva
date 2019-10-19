@@ -1,0 +1,84 @@
+#include <stdio.h>
+
+int main ()
+{
+	int a[100];
+	int n,k,m;
+	int point1,point2;
+	int count;
+	int i,j;
+	while (scanf("%d%d%d",&n,&k,&m) != EOF)
+	{
+		count = 0;
+		if (n==0  && k==0 && m ==0)
+		{
+			break;
+		}
+		for (i=1;i<=n;i++)
+		{
+			a[i]=i;
+		}
+		point1=n;
+		point2=1;
+		while (count != n)
+		{
+			for (j=1;j<=k;)
+			{
+				point1++;
+				if (point1==n+1)
+				{
+					point1=1;
+				}
+				if (a[point1] != 0)
+				{
+					j++;
+				}
+				
+			}
+
+			for (j=1;j<=m;)
+			{
+				point2--;
+				if (point2==0)
+				{
+					point2 = n;
+				 } 
+				if (a[point2]!=0)
+				{
+					
+					j++;
+				}
+				
+			}
+			a[point1] = 0;
+			a[point2] = 0;
+			if (point1 != point2)
+			{
+				printf("%3d%3d",point1,point2);
+				count =count + 2;
+				if(count != n)
+				{
+					printf(",");
+				} 
+				else 
+				{
+					printf("\n");
+				}
+			}
+			else
+			{
+				printf("%3d",point1);
+				count =count + 1;
+				if(count != n)
+				{
+					printf(",");
+				} 
+				else 
+				{
+					printf("\n");
+				}
+			}
+			
+		}
+	}
+}
