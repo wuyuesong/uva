@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int max (int a,int b)
+{
+	return a>b? a:b; 
+}
+int yidong(char * a ,char * b)
+{
+	int flag;
+	int move;
+	int i,min=300;
+	for (move=0;move<=strlen(b);move++)
+    	{
+    		flag=1;
+    	for (i=0;i<strlen(a);i++)
+    	{
+    		if ((a[i] + b[i+move] -'0' -'0')>3)
+    		{
+    			flag = 0;
+    			break;
+			}
+		}
+		if (flag == 1)
+		{
+			if (min>max(strlen(b),move+strlen(a)))
+			{
+				min=max(strlen(b),move+strlen(a));
+			}
+			break;
+		}
+		}
+		return min;
+}
+
+int main()
+{
+    char a[220],b[220];
+    int min;
+    memset (a,0,sizeof(a));
+    memset (b,0,sizeof(b));
+    while (scanf ("%s",a)!=EOF&&scanf("%s",b)!=EOF)
+    {
+    	min =300;
+    	if (min>yidong(a,b))
+    	{
+    		min = yidong (a,b); 
+		}
+		if (min>yidong(b,a))
+    	{
+    		min = yidong (b,a); 
+		}
+		printf("%d\n",min);
+		memset (a,0,sizeof(a));
+    	memset (b,0,sizeof(b));
+	}
+}
