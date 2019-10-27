@@ -1,0 +1,57 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+#include <cstdio>
+#include <stdio.h>
+#include <algorithm>
+#include <cctype>
+#include <set>
+using namespace std;
+
+vector <string> words;
+map <string,int> cnt;
+string repir(const string &s)
+{
+	string ans  =s;
+	int i;
+	for (i=0; i<=s.length() ;i++)
+	{
+		ans[i]=tolower(s[i]);
+	 } 
+	 sort(ans.begin(),ans.end());
+	 return ans;
+}
+int main()
+{
+	string s;
+	int i;
+	while (cin>>s)
+	{
+		if(s=="#") break;
+		words.push_back(s);
+		string r = repir(s);
+		if(!cnt.count(r))
+		{
+			cnt[r]=1;
+		}
+		else 
+		{
+			cnt[r]=2;
+		}
+		
+	}
+	set <string> ans ;
+	for (i=0;i<words.size();i++)
+	{
+		if(cnt[repir(words[i])]==1)
+		{
+			ans.insert(words[i]);
+		}
+	}
+	for (set<string> :: iterator it =ans.begin();it!= ans.end();it ++)
+	{
+		cout << *it <<  "\n";
+	 } 
+	return 0;
+}
